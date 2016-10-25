@@ -1,0 +1,44 @@
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+    	<link rel="stylesheet" href="static/build/styles.css">
+    	<script src="static/build/bundle.js"></script>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    </head>
+    <body ng-controller="mainCtrl">
+    <div style="width: 95%; margin: 0 auto;">
+        <h1>Goods</h1>
+    </div>
+    <div ng-repeat-start="item in goods.goods" style="width: 95%; margin: 0 auto; border: 1px solid lightgrey">
+        <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>№{{$index+1}}</th>
+        <th>Data</th>
+        <th>Description ({{item.name}})</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(key, value) in item">
+        <td>{{$index+1}}</td>
+        <td>{{key}}</td>
+        <td ng-if="key != 'props'">{{value}}</td>
+        <td ng-if="key == 'props'">
+            <ul ng-repeat="descr in value" style="float: left; width: 45%">
+                <li ng-repeat="(data, desc) in descr">
+                    <span>{{data}}: </span>
+                    <span>{{desc}}</span>
+                </li>
+            </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+    <br ng-repeat-end>
+    </body>
+</html>
